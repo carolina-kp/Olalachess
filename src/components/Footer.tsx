@@ -1,7 +1,27 @@
 import { Link } from "react-router-dom";
 import { ExternalLink } from "lucide-react";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const Footer = () => {
+  const { t } = useLanguage();
+
+  const navLinks = [
+    { to: "/", label: t.nav.home },
+    { to: "/about", label: t.nav.about },
+    { to: "/services", label: t.nav.services },
+    { to: "/training", label: t.nav.training },
+    { to: "/events", label: t.nav.events },
+    { to: "/videos", label: t.nav.videos },
+    { to: "/contact", label: t.nav.contact },
+  ];
+
+  const connectLinks = [
+    { href: "https://www.facebook.com/groups/olalachess", label: t.footer.facebookGroup },
+    { href: "https://www.facebook.com/koganart", label: t.footer.facebookPage },
+    { href: "https://en.wikipedia.org/wiki/Arthur_Kogan", label: t.footer.wikipedia },
+    { href: "mailto:koganart@hotmail.com", label: t.footer.email },
+  ];
+
   return (
     <footer className="bg-foreground text-primary-foreground/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -15,23 +35,17 @@ const Footer = () => {
               </span>
             </div>
             <p className="font-serif italic text-primary-foreground/50">
-              "Make all your pieces smile"
+              {t.footer.tagline}
             </p>
           </div>
 
           {/* Navigate */}
           <div>
-            <h4 className="font-serif font-bold text-primary-foreground mb-4">Navigate</h4>
+            <h4 className="font-serif font-bold text-primary-foreground mb-4">
+              {t.footer.navigate}
+            </h4>
             <div className="space-y-2">
-              {[
-                { to: "/", label: "Home" },
-                { to: "/about", label: "About" },
-                { to: "/services", label: "Services" },
-                { to: "/training", label: "Training" },
-                { to: "/events", label: "Events" },
-                { to: "/videos", label: "Videos" },
-                { to: "/contact", label: "Contact" },
-              ].map((link) => (
+              {navLinks.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
@@ -45,14 +59,11 @@ const Footer = () => {
 
           {/* Connect */}
           <div>
-            <h4 className="font-serif font-bold text-primary-foreground mb-4">Connect</h4>
+            <h4 className="font-serif font-bold text-primary-foreground mb-4">
+              {t.footer.connect}
+            </h4>
             <div className="space-y-2">
-              {[
-                { href: "https://www.facebook.com/groups/olalachess", label: "Facebook Group" },
-                { href: "https://www.facebook.com/koganart", label: "Facebook Page" },
-                { href: "https://en.wikipedia.org/wiki/Arthur_Kogan", label: "Wikipedia" },
-                { href: "mailto:koganart@hotmail.com", label: "Email" },
-              ].map((link) => (
+              {connectLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
@@ -69,7 +80,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="border-t border-primary-foreground/10 py-6 text-center text-primary-foreground/30 text-sm">
-        © {new Date().getFullYear()} OlalaChess — GM Arthur Kogan. All rights reserved.
+        {t.footer.copyright.replace("{year}", String(new Date().getFullYear()))}
       </div>
     </footer>
   );

@@ -1,21 +1,24 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-
-const links = [
-  { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
-  { to: "/services", label: "Services" },
-  { to: "/training", label: "Training" },
-  { to: "/events", label: "Events" },
-  { to: "/videos", label: "Videos" },
-  { to: "/contact", label: "Contact" },
-];
+import { useLanguage } from "../contexts/LanguageContext";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const { t } = useLanguage();
+
+  const links = [
+    { to: "/", label: t.nav.home },
+    { to: "/about", label: t.nav.about },
+    { to: "/services", label: t.nav.services },
+    { to: "/training", label: t.nav.training },
+    { to: "/events", label: t.nav.events },
+    { to: "/videos", label: t.nav.videos },
+    { to: "/contact", label: t.nav.contact },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -58,6 +61,9 @@ const Navbar = () => {
                 {link.label}
               </Link>
             ))}
+            <div className="ml-2 pl-2 border-l border-primary-foreground/20">
+              <LanguageSwitcher />
+            </div>
           </div>
 
           <button
@@ -85,6 +91,9 @@ const Navbar = () => {
                 {link.label}
               </Link>
             ))}
+            <div className="pt-2 border-t border-primary-foreground/10">
+              <LanguageSwitcher />
+            </div>
           </div>
         </div>
       )}

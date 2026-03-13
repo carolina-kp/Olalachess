@@ -2,11 +2,13 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Mouse } from "lucide-react";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 const pieces = ["♛", "♞", "♝", "♜", "♚", "♟"];
 
 const ChessHero = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -122,7 +124,7 @@ const ChessHero = () => {
           className="mb-6"
         >
           <span className="text-primary text-sm tracking-[0.3em] uppercase font-medium">
-            Positive Thinking
+            {t.hero.label}
           </span>
         </motion.div>
 
@@ -141,7 +143,7 @@ const ChessHero = () => {
           transition={{ duration: 0.8, delay: 0.7 }}
           className="font-serif italic text-primary-foreground/60 text-xl md:text-2xl mb-8"
         >
-          Make all your pieces smile
+          {t.hero.tagline}
         </motion.p>
 
         <motion.p
@@ -150,8 +152,7 @@ const ChessHero = () => {
           transition={{ duration: 0.8, delay: 0.9 }}
           className="text-primary-foreground/50 max-w-2xl mx-auto mb-10 text-base lg:text-lg"
         >
-          Master strategy. Elevate your chess. Transform your thinking. A method rooted
-          in positive thinking, harmony on the board, and unlimited growth.
+          {t.hero.description}
         </motion.p>
 
         <motion.div
@@ -164,13 +165,13 @@ const ChessHero = () => {
             to="/contact"
             className="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
           >
-            Book a Session
+            {t.hero.bookSession}
           </Link>
           <Link
             to="/about"
             className="px-8 py-3 border border-primary-foreground/20 text-primary-foreground rounded-lg font-medium hover:bg-primary-foreground/10 transition-colors"
           >
-            Learn More
+            {t.hero.learnMore}
           </Link>
         </motion.div>
 
@@ -180,7 +181,7 @@ const ChessHero = () => {
           transition={{ duration: 0.8, delay: 1.5 }}
           className="mt-12 text-primary-foreground/30 text-sm"
         >
-          GM Arthur Kogan — Grandmaster & Chess Trainer
+          {t.hero.credit}
         </motion.p>
       </div>
 

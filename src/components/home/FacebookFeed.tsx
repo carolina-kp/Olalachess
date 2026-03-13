@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import SectionReveal from "../SectionReveal";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 declare global {
   interface Window {
@@ -8,6 +9,8 @@ declare global {
 }
 
 const FacebookFeed = () => {
+  const { t } = useLanguage();
+
   useEffect(() => {
     const existingScript = document.getElementById("facebook-jssdk");
     if (!existingScript) {
@@ -29,10 +32,10 @@ const FacebookFeed = () => {
         <SectionReveal>
           <div className="text-center mb-16">
             <span className="text-primary text-sm font-medium tracking-wider uppercase">
-              Community
+              {t.community.label}
             </span>
             <h2 className="font-serif text-4xl lg:text-5xl font-bold mt-3">
-              Join the OlalaChess Community
+              {t.community.heading}
             </h2>
           </div>
         </SectionReveal>
@@ -40,7 +43,7 @@ const FacebookFeed = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <SectionReveal>
             <div className="rounded-2xl border border-border p-6">
-              <h3 className="font-serif text-xl font-bold mb-4">OlalaChess Group</h3>
+              <h3 className="font-serif text-xl font-bold mb-4">{t.community.groupTitle}</h3>
               <div
                 className="fb-group"
                 data-href="https://www.facebook.com/groups/olalachess"
@@ -53,14 +56,14 @@ const FacebookFeed = () => {
                 rel="noopener noreferrer"
                 className="inline-block mt-4 px-6 py-2 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
               >
-                Join Group
+                {t.community.joinGroup}
               </a>
             </div>
           </SectionReveal>
 
           <SectionReveal delay={0.1}>
             <div className="rounded-2xl border border-border p-6">
-              <h3 className="font-serif text-xl font-bold mb-4">Arthur Kogan</h3>
+              <h3 className="font-serif text-xl font-bold mb-4">{t.community.pageTitle}</h3>
               <div
                 className="fb-page"
                 data-href="https://www.facebook.com/koganart"
@@ -74,7 +77,7 @@ const FacebookFeed = () => {
                 rel="noopener noreferrer"
                 className="inline-block mt-4 px-6 py-2 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
               >
-                Follow Page
+                {t.community.followPage}
               </a>
             </div>
           </SectionReveal>
