@@ -121,17 +121,28 @@ const ChessHero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-6"
+          className="mb-4"
         >
           <span className="text-primary text-sm tracking-[0.3em] uppercase font-medium">
             {t.hero.label}
           </span>
         </motion.div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mb-6"
+        >
+          <span className="inline-block px-4 py-1.5 rounded-full border border-amber-300/30 bg-amber-300/10 text-amber-200 text-sm tracking-[0.2em] uppercase font-semibold">
+            {t.hero.credit}
+          </span>
+        </motion.div>
+
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
           className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-primary-foreground mb-6"
         >
           OLALACHESS
@@ -140,7 +151,7 @@ const ChessHero = () => {
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
           className="font-serif italic text-primary-foreground/60 text-xl md:text-2xl mb-8"
         >
           {t.hero.tagline}
@@ -149,7 +160,7 @@ const ChessHero = () => {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
+          transition={{ duration: 0.8, delay: 1.0 }}
           className="text-primary-foreground/50 max-w-2xl mx-auto mb-10 text-base lg:text-lg"
         >
           {t.hero.description}
@@ -158,7 +169,7 @@ const ChessHero = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.1 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <Link
@@ -174,15 +185,6 @@ const ChessHero = () => {
             {t.hero.learnMore}
           </Link>
         </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.5 }}
-          className="mt-12 text-primary-foreground/30 text-sm"
-        >
-          {t.hero.credit}
-        </motion.p>
       </div>
 
       <motion.div

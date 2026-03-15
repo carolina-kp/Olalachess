@@ -1,15 +1,7 @@
-import { Mail, Phone, MapPin, ExternalLink } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { Mail, ExternalLink } from "lucide-react";
 import PageHero from "../components/PageHero";
 import SectionReveal from "../components/SectionReveal";
 import { useLanguage } from "../contexts/LanguageContext";
-
-const METHOD_ICONS: LucideIcon[] = [Mail, Phone, MapPin];
-const METHOD_HREFS = [
-  "mailto:koganart@hotmail.com",
-  "https://wa.me/34635943271",
-  null,
-] as (string | null)[];
 
 const SOCIAL_HREFS = [
   "https://www.facebook.com/groups/olalachess",
@@ -22,16 +14,21 @@ const Contact = () => {
   const { t } = useLanguage();
   const { contact } = t;
 
-  const methods = contact.methods.map((m, i) => ({
-    ...m,
-    icon: METHOD_ICONS[i],
-    href: METHOD_HREFS[i],
-  }));
-
   const socialLinks = contact.socialLinks.map((label, i) => ({
     label,
     href: SOCIAL_HREFS[i],
   }));
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const name = (form.elements.namedItem("name") as HTMLInputElement).value;
+    const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+    const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value;
+    const subject = encodeURIComponent(`Message from ${name}`);
+    const body = encodeURIComponent(`From: ${name}\nEmail: ${email}\n\n${message}`);
+    window.location.href = `mailto:koganart@hotmail.com?subject=${subject}&body=${body}`;
+  };
 
   return (
     <>
@@ -44,38 +41,65 @@ const Contact = () => {
               <SectionReveal>
                 <h2 className="font-serif text-3xl font-bold mb-8">{contact.methodsTitle}</h2>
               </SectionReveal>
-              <div className="space-y-6">
-                {methods.map((method, i) => (
-                  <SectionReveal key={i} delay={i * 0.1}>
-                    {method.href ? (
-                      <a
-                        href={method.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-start gap-4 p-6 rounded-2xl border border-border hover:border-primary/30 hover:shadow-lg transition-all"
-                      >
-                        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                          <method.icon className="text-primary" size={22} />
-                        </div>
-                        <div>
-                          <h3 className="font-serif font-bold">{method.title}</h3>
-                          <p className="text-muted-foreground">{method.value}</p>
-                        </div>
-                      </a>
-                    ) : (
-                      <div className="flex items-start gap-4 p-6 rounded-2xl border border-border">
-                        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                          <method.icon className="text-primary" size={22} />
-                        </div>
-                        <div>
-                          <h3 className="font-serif font-bold">{method.title}</h3>
-                          <p className="text-muted-foreground">{method.value}</p>
-                        </div>
-                      </div>
-                    )}
-                  </SectionReveal>
-                ))}
-              </div>
+
+              <SectionReveal delay={0.1}>
+                <a
+                  href="mailto:koganart@hotmail.com"
+                  className="flex items-center gap-4 p-6 rounded-2xl border border-border hover:border-primary/30 hover:shadow-lg transition-all mb-4"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Mail className="text-primary" size={22} />
+                  </div>
+                  <span className="font-medium">{contact.sendEmailBtn}</span>
+                </a>
+              </SectionReveal>
+
+              <SectionReveal delay={0.2}>
+                <a
+                  href="https://wa.me/34635943271"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-6 rounded-2xl border border-green-500/40 bg-green-500/5 hover:border-green-500/60 hover:shadow-lg transition-all mb-8"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center flex-shrink-0 text-2xl">
+                    💬
+                  </div>
+                  <span className="font-medium text-green-600 dark:text-green-400">{contact.whatsappBtn}</span>
+                </a>
+              </SectionReveal>
+
+              <SectionReveal delay={0.3}>
+                <h2 className="font-serif text-3xl font-bold mb-6">{contact.formTitle}</h2>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    placeholder={contact.namePlaceholder}
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:outline-none focus:border-primary/50 transition-colors"
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    placeholder={contact.emailPlaceholder}
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:outline-none focus:border-primary/50 transition-colors"
+                  />
+                  <textarea
+                    name="message"
+                    required
+                    rows={5}
+                    placeholder={contact.messagePlaceholder}
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:outline-none focus:border-primary/50 transition-colors resize-none"
+                  />
+                  <button
+                    type="submit"
+                    className="w-full py-3 px-6 rounded-xl bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
+                  >
+                    {contact.submitBtn}
+                  </button>
+                </form>
+              </SectionReveal>
             </div>
 
             <div>

@@ -357,11 +357,13 @@ const he: Translations = {
     pageTitle: "צור קשר",
     pageSubtitle: "פנה אלי",
     methodsTitle: "דרכי יצירת קשר",
-    methods: [
-      { title: "דואר אלקטרוני", value: "koganart@hotmail.com" },
-      { title: "וואטסאפ", value: "+34 635 943 271" },
-      { title: "מיקום", value: "טראגונה, ספרד" },
-    ],
+    sendEmailBtn: "שלח דואר אלקטרוני",
+    whatsappBtn: "שוחח בוואטסאפ",
+    formTitle: "שלח הודעה",
+    namePlaceholder: "שמך",
+    emailPlaceholder: "הדואר האלקטרוני שלך",
+    messagePlaceholder: "הודעתך",
+    submitBtn: "שלח הודעה",
     socialTitle: "רשתות חברתיות",
     socialLinks: [
       "קבוצת פייסבוק OlalaChess",

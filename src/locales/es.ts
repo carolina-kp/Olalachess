@@ -357,11 +357,13 @@ const es: Translations = {
     pageTitle: "Contacto",
     pageSubtitle: "Ponte en contacto",
     methodsTitle: "Métodos de Contacto",
-    methods: [
-      { title: "Correo electrónico", value: "koganart@hotmail.com" },
-      { title: "WhatsApp", value: "+34 635 943 271" },
-      { title: "Ubicación", value: "Tarragona, España" },
-    ],
+    sendEmailBtn: "Enviar correo",
+    whatsappBtn: "Chatear por WhatsApp",
+    formTitle: "Enviar un mensaje",
+    namePlaceholder: "Tu nombre",
+    emailPlaceholder: "Tu correo electrónico",
+    messagePlaceholder: "Tu mensaje",
+    submitBtn: "Enviar mensaje",
     socialTitle: "Redes Sociales",
     socialLinks: [
       "Grupo de Facebook OlalaChess",

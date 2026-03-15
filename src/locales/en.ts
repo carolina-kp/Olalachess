@@ -355,11 +355,13 @@ const en = {
     pageTitle: "Contact",
     pageSubtitle: "Get in touch",
     methodsTitle: "Contact Methods",
-    methods: [
-      { title: "Email", value: "koganart@hotmail.com" },
-      { title: "WhatsApp", value: "+34 635 943 271" },
-      { title: "Location", value: "Tarragona, Spain" },
-    ],
+    sendEmailBtn: "Send Email",
+    whatsappBtn: "Chat on WhatsApp",
+    formTitle: "Send a Message",
+    namePlaceholder: "Your name",
+    emailPlaceholder: "Your email",
+    messagePlaceholder: "Your message",
+    submitBtn: "Send Message",
     socialTitle: "Social Links",
     socialLinks: [
       "OlalaChess Facebook Group",

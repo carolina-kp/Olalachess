@@ -357,11 +357,13 @@ const ru: Translations = {
     pageTitle: "Контакты",
     pageSubtitle: "Свяжитесь со мной",
     methodsTitle: "Способы связи",
-    methods: [
-      { title: "Эл. почта", value: "koganart@hotmail.com" },
-      { title: "WhatsApp", value: "+34 635 943 271" },
-      { title: "Местоположение", value: "Таррагона, Испания" },
-    ],
+    sendEmailBtn: "Написать на почту",
+    whatsappBtn: "Написать в WhatsApp",
+    formTitle: "Отправить сообщение",
+    namePlaceholder: "Ваше имя",
+    emailPlaceholder: "Ваш email",
+    messagePlaceholder: "Ваше сообщение",
+    submitBtn: "Отправить",
     socialTitle: "Социальные сети",
     socialLinks: [
       "Группа OlalaChess на Facebook",
